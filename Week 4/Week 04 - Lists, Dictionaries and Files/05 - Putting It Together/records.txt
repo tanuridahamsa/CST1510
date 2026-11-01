@@ -1,0 +1,5 @@
+Login Attempts,120,100
+Network Traffic,85,100
+CPU Usage,95,100
+Disk Storage,60,100
+Failed Passwords,110,100
