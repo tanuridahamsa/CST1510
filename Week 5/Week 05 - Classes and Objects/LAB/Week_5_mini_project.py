@@ -13,7 +13,7 @@ Run it:   python template.py
 
 # ====================================================================== CLASS
 class Record:
-    over_limit_count = 0
+    over_limit_count = 0    #This will start the counter from 0.
 
     """this stores the label,value, and limit of a record"""
     def __init__(self, label, value, limit):
@@ -23,7 +23,7 @@ class Record:
 
     """this will check the status of the report which is based on the percentage"""
     def status(self):
-        percent = (self.value / self.limit) * 100
+        percent = (self.value / self.limit) * 100       #It's going to calculate the percentage of the record.
 
         if percent >= 100:
             return "OVER LIMIT"
@@ -37,20 +37,20 @@ class Record:
 # ==================================================================== RECORDS
 def load_records(path):
     """This will read the file and store the records in a list"""
-    records = []   
+    records = []    #It's going to create an empty list to store the records.
 
-    with open(path) as f:
+    with open(path) as f:   #This will open the file and read the records from it.
         for line in f:
             label, value, limit = line.strip().split(",")
-            records.append(Record(label, float(value), float(limit)))
+            records.append(Record(label, float(value), float(limit)))   #This is going to add each record into the list.
 
     return records
 
-records = load_records("Week 5/Week 05 - Classes and Objects/LAB/cyber_records.txt")
+records = load_records("Week 5/Week 05 - Classes and Objects/LAB/cyber_records.txt")   #It's going to call the function and load the records from the file.
 
 # ==================================================================== OUTPUT
 over_limit_count = 0
-for record in records:
+for record in records:  #This loop will go through each record and show it details.
     print()
     print("=" * 34)
     print(f"  RECORD CHECK  -  {record.label}")
@@ -62,12 +62,12 @@ for record in records:
     print(f"Total Attempts      :{record.limit}")
     print(f"Status              :{record.status()}")
 
-    if record.status() == "OVER LIMIT":
+    if record.status() == "OVER LIMIT":     #This is going to add 1 to the counter if the record is Over the limit.
         over_limit_count += 1
 
     print("=" * 34)
     
-print(f"Total over limit count: {over_limit_count}")
+print(f"Total over limit count: {over_limit_count}")    #It will show the total number of records which will be over the limit.
 
 # ==========================================================================
 
