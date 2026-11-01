@@ -8,13 +8,11 @@ Date  : 10/10/2026
 
 Run it:   python template.py
 
-Work through the numbered sections in order. Each one tells you what it must do.
-Delete these instructions as you replace them with your code.
 """
 
 # =================================================================== FUNCTIONS
 
-def status_of(percent):
+def status_of(percent):       #Defines the function called status_of. It checks the percentage and returns Over Limit, Warning, and Ok.
     if percent >= 100:
         return "Over Limit"
         
@@ -30,7 +28,7 @@ def check(value, limit):
         percentage = (value / limit) * 100
         return difference, percentage
 
-def print_report(label, value, limit, difference, percent, status):
+def print_report(label, value, limit, difference, percent, status):     #Shows the record details and the results
         print(label)
         print("Value", value)
         print("Limit", limit)
@@ -41,15 +39,15 @@ def print_report(label, value, limit, difference, percent, status):
 
 # ==================================================================== INPUT
 
-label = input("Enter source IP:") 
+label = input("Enter source IP:")       #It will ask the user to enter a source IP, failed logins, and total attempts.
 value = float(input("Enter failed logins:"))  
 limit = float(input("Enter total attempts: "))   
 
 
 # ================================================================== PROCESS
 
-difference, percent = check(value, limit)
-status = status_of(percent)
+difference, percent = check(value, limit)    #This will call the function and calculate the difference and percent.
+status = status_of(percent)     #It will call the function and checks for the status.
 
 # =================================================================== OUTPUT
 
@@ -65,13 +63,14 @@ print(f"Percent:        {percent:>10.2f}")
 print(f"Status:         {status}")
 
 
-over_count = 0
+over_count = 0      #It will start counting the records which are over the limit
 
-while True:
+
+while True:     #It will keep asking the user to enter the records until they type quit.
     label=input("Enter source IP (or quit to stop):")
 
-    if label == "quit":
-        break 
+    if label == "quit":     #The loop will stop when the user enters quit
+        break
 
     value = float(input("Enter failed logins:"))
     limit = float(input("Enter total attempts:"))
@@ -80,19 +79,15 @@ while True:
     status = status_of(percent)
 
     if status == "Over Limit":
-        over_count += 1
+        over_count += 1     #It will add 1 to the counter when a record is over the limit.
 
     print_report(label, value, limit, difference, percent, status)
 
-print(f"Total records over limit: {over_count}")
+print(f"Total records over limit: {over_count}")       #This will show the total number of records which are over the limit.
 
 print("=" * 34)
 
 
 # ==========================================================================
-# 5. Before you finish:
-#
-#    [ ] Run it three times with different numbers
-#    [ ] Run it with a total of 0 and note the error (do not fix it yet)
-#    [ ] Check every function does one job - if a function both calculates
-#        and prints, split it
+
+
